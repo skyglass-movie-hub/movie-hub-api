@@ -3,7 +3,7 @@ on: push
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: skyglass-movie/movies-online-api
+  IMAGE_NAME: skyglass-movie-hub/movie-hub-api
   VERSION: ${{ github.sha }}
 
 jobs:
