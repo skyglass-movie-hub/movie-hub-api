@@ -23,8 +23,7 @@ repositories {
 
 ext {
 	set('javaVersion', "17")
-	set('springBootVersion', "3.0.6")	
-	set('keycloakVersion', "21.1.1")
+	set('springBootVersion', "3.0.6")
 	set('mapstructVersion', "1.5.5.Final")
 	set('lombokMapstructBindingVersion', "0.2.0")
 	set('springDocOpenApiVersion', "2.1.0")
@@ -38,7 +37,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-	implementation "org.keycloak:keycloak-admin-client:${keycloakVersion}"
 	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
 	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springDocOpenApiVersion}"
 
