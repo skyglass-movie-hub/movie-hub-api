@@ -42,7 +42,7 @@ public class SwaggerConfig {
 
     @Bean
     public GroupedOpenApi customApi() {
-        return GroupedOpenApi.builder().group("movie").pathsToMatch("/movie/**").build();
+        return GroupedOpenApi.builder().group("movie").pathsToMatch("/movies/api/**").build();
     }
 
     @Bean
