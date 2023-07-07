@@ -25,12 +25,12 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET, "/api/movies", "/api/movies/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/movies/api", "/movies/api/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/actuator/**").permitAll()
-                .requestMatchers("/api/movies/*/comments").hasAnyRole(MOVIES_MANAGER, USER)
-                .requestMatchers("/api/movies", "/api/movies/**").hasRole(MOVIES_MANAGER)
-                .requestMatchers("/api/userextras/me").hasAnyRole(MOVIES_MANAGER, USER)
-                .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll()
+                .requestMatchers("/movies/api/*/comments").hasAnyRole(MOVIES_MANAGER, USER)
+                .requestMatchers("/movies/api", "/movies/api/**").hasRole(MOVIES_MANAGER)
+                .requestMatchers("/movies/api/userextras/me").hasAnyRole(MOVIES_MANAGER, USER)
+                .requestMatchers("/openapi/swagger-ui.html", "/openapi/swagger-ui/**", "/openapi/v3/api-docs", "/openapi/v3/api-docs/**", "/webjars/**").permitAll()
                 .anyRequest().authenticated();
         http.oauth2ResourceServer()
                 .jwt()
