@@ -20,7 +20,7 @@ import static com.ivanfranchin.moviesapi.config.SwaggerConfig.BEARER_KEY_SECURIT
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("api/userextras")
+@RequestMapping("movies/api/userextras")
 public class UserExtraController {
 
     private final UserExtraService userExtraService;
