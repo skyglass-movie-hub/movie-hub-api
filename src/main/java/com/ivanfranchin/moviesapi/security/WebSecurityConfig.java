@@ -25,13 +25,16 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET, "/movies/api", "/movies/api/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/actuator/**").permitAll()
-                .requestMatchers("/api/*/comments").hasAnyRole(MOVIES_MANAGER, USER)
-                .requestMatchers("/api", "/api/**").hasRole(MOVIES_MANAGER)
-                .requestMatchers("/api/userextras/me").hasAnyRole(MOVIES_MANAGER, USER)
-                .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**", "/webjars/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api", "/api/**", "/movies/api", "/movies/api/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/actuator/**", "/movies/actuator/**").permitAll()
+                .requestMatchers("/", "/*.css", "/*.js", "/favicon.ico").permitAll()
+                .requestMatchers("/api/*/comments", "/movies/api/*/comments").hasAnyRole(MOVIES_MANAGER, USER)
+                .requestMatchers("/api", "/api/**", "/movies/api", "/movies/api/**").hasRole(MOVIES_MANAGER)
+                .requestMatchers("/api/userextras/me", "/movies/api/userextras/me").hasAnyRole(MOVIES_MANAGER, USER)
+                .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**",
+								"/openapi/**", "/webjars/**", "/oauth2/**", "/login/**", "/error/**").permitAll()
                 .anyRequest().authenticated();
+
         http.oauth2ResourceServer()
                 .jwt()
                 .jwtAuthenticationConverter(jwtAuthConverter);
