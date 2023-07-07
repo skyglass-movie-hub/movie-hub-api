@@ -31,6 +31,10 @@ app:
   cors:
     allowed-origins: ${movies-app.base-url}
 
+movies-app:
+  base-url: http://localhost:3000
+  redirect-url: ${movies-app.base-url}/*
+
 management:
   endpoints:
     web:
