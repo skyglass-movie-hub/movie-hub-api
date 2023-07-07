@@ -30,7 +30,7 @@ import static com.ivanfranchin.moviesapi.config.SwaggerConfig.BEARER_KEY_SECURIT
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("movies/api")
+@RequestMapping("movies")
 public class MoviesController {
 
     private final MovieService movieService;
