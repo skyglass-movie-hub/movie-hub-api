@@ -1,5 +1,8 @@
 package com.ivanfranchin.moviesapi.config;
 
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.OAuthFlow;
+import io.swagger.v3.oas.annotations.security.OAuthFlows;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -10,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@SecurityScheme(
+@io.swagger.v3.oas.annotations.security.SecurityScheme(
   name = "security_auth", type = SecuritySchemeType.OAUTH2,
   flows = @OAuthFlows(
     authorizationCode = @OAuthFlow(
