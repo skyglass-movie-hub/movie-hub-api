@@ -56,10 +56,10 @@ public class WebSecurityConfig {
         return jwtAuthenticationConverter;
     }
 
-    /*@Bean
+    @Bean
     public JwtDecoder jwtDecoder(@Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}") String jwkSetUri) {
         return NimbusJwtDecoder.withJwkSetUri(jwkSetUri).jwsAlgorithm(SignatureAlgorithm.RS256).build();
-    }*/
+    }
 
     public static final String MOVIES_MANAGER = "MOVIES_MANAGER";
     public static final String USER = "USER";
