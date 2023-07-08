@@ -24,8 +24,8 @@ public class SwaggerConfig {
                             .addSecuritySchemes(BEARER_KEY_SECURITY_SCHEME,
                                     new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT"))
                 )
-                .info(new Info().title(applicationName))
-                .addSecurityItem(new SecurityRequirement().addList(BEARER_KEY_SECURITY_SCHEME));
+                .info(new Info().title(applicationName));
+                //.addSecurityItem(new SecurityRequirement().addList(BEARER_KEY_SECURITY_SCHEME));
     }
 
     @Bean

@@ -31,7 +31,9 @@ public class WebSecurityConfig {
         return http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(HttpMethod.GET, "/", "/movies/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/actuator/**").permitAll()
-                .requestMatchers("/", "/*.css", "/*.js", "/favicon.ico").permitAll()
+                .requestMatchers("/", "/*.css", "/*.js", "/favicon.ico", "/static/**").permitAll()
+                .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**",
+                                "/openapi/**", "/webjars/**").permitAll()
                 .requestMatchers("/movies/*/comments").hasAnyRole(MOVIES_MANAGER, USER)
                 .requestMatchers("/", "/movies/**").hasRole(MOVIES_MANAGER)
                 .requestMatchers("/userextras/me", "/movies/userextras/me").hasAnyRole(MOVIES_MANAGER, USER)
