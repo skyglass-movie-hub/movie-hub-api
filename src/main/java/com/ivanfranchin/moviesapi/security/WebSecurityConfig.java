@@ -37,7 +37,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/userextras/me", "/movies/userextras/me").hasAnyRole(MOVIES_MANAGER, USER)
                 .anyRequest().authenticated()
         )
-        .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+        .oauth2ResourceServer(config -> config.jwt().jwtAuthenticationConverter(jwtAuthConverter))
         .sessionManagement(sessionManagement ->
                 sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .csrf(AbstractHttpConfigurer::disable)
@@ -45,7 +45,7 @@ public class WebSecurityConfig {
     }
 
 
-    @Bean
+    /*@Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         var jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
         jwtGrantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
@@ -54,7 +54,7 @@ public class WebSecurityConfig {
         var jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwtGrantedAuthoritiesConverter);
         return jwtAuthenticationConverter;
-    }
+    }*/
 
     @Bean
     public JwtDecoder jwtDecoder(@Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}") String jwkSetUri) {
